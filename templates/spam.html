@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            background-color: #C9C9C9
+        }
+        .login_button{
+            display: block;margin: 60px 80px;height: 40px;width: 80px;font-size: 20px;font-weight: bold;line-height: 40px;text-align: center;background-color: #CCFFFF;border-radius: 3px;
+        }
+        .index_head {
+            height: 80px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .index_head p {
+            width: 200px;
+            margin: 10px auto;
+            font-size: 20px;
+            font-family: 楷体;
+            text-align: center;
+        }
+
+        .index_medium {
+            width: 100%;
+        }
+
+        .index_medium textarea {
+            width: 60%;
+            height: 380px;
+            margin: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .index_buttom {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .button_class {
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            font-family: 楷体;
+            margin: auto;
+            display: block;
+            border-radius: 5px;
+            border: none;
+            font-family: 楷体;
+            text-align: center;
+        }
+    </style>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<a class="login_button" style="text-decoration: none;color: black" href="/user/login/">
+    login
+</a>
+    <div class="index_head">
+        <p>邮件</p>
+    </div>
+
+    <div class="index_medium">
+		<textarea id="content1" rows="3"  name="content"></textarea>
+    </div>
+    <div class="index_buttom">
+        <input class="button_class" type="button" value="过滤">
+
+    </div>
+
+</body>
+<script>
+    $(".index_buttom").click(function () {
+        $.ajax({
+            url:"/deal/",
+            method:"post",
+            data:{content:$("#content1").val()},
+            success:function (d) {
+                if(d["code"]===0){
+                    alert("邮件预测为："+d["result"])
+                }
+                else if (d["code"]===1){
+                    alert("邮件发送为空")
+                }
+            }
+        })
+    })
+
+</script>
+</html>

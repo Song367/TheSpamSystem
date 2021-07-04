@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/SpamSystem/asgi.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dataSet" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/deal_data/normal_words" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/deal_data/spam_words" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/deal_data/words" charset="GBK" />
+  </component>
+</project>

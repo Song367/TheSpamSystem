@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        li{list-style: none;}
+        body{padding: 0;margin: 0;}
+        .head{width: 80%;margin: auto;height: 80px;background-color: #99CCCC;border-radius: 8px;}
+        .head_left{display: block;margin-left: 20px;line-height: 80px;float: left;font-weight: bold;font-size: 20px;}
+        .head_right{display: block;margin-right: 20px;line-height: 80px;float:right;text-decoration: none;color:#1b1e21;font-weight: bold}
+        .head_second_right{margin:20px 20px;float: right;height: 40px;width: 80px;font-size: 20px;font-weight: bold;line-height: 40px;text-align: center;background-color: #CCFFFF;border-radius: 3px;}
+        .maintain{width: 80%;margin: auto;display: block;}
+        .main_left{float: left;width: 20%;display: block;background-color: #FFCC99;border-radius: 8px;margin-top: 10px;}
+        .main_left li{text-align: center;margin: 20px 20px;width: 60%;height:50px;line-height:50px;border-radius: 5px;}
+        .main_left li:hover{
+            border: #FF6666 solid 2px;
+        }
+        .detail_right{float: right; width: 75%;display: none;margin: 5px;border: #CC9966 solid 4px;}
+        .content_dis{margin: 40px auto;width: 80%;font-size: 18px;}
+        .title{width: 70%;margin: 10px auto;}
+        .title span{margin-left: 5%}
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: pre-wrap;
+            white-space: -o-pre-wrap;
+            *word-wrap: break-word;
+            *white-space : normal ;
+        }
+        .main_right{float: right; width: 80%;display: block;}
+        .receive_email{float: right;width: 75%;display: block;border: #CC9966 solid 4px;height: 600px;margin-top: 10px;overflow-y: scroll}
+        .receive_email li{width: 60%;height: 120px;background-color: #5a6268;border-radius: 10px;margin: auto}
+        .send_email{float: right;width: 75%;display: none;border: #CC9966 solid 4px;height: 600px;margin-top: 10px;overflow-y: scroll}
+        .send_email li{width: 60%;height: 120px;background-color: #5a6268;border-radius: 10px;margin: auto}
+        .spam_email{float: right;width: 75%;display: none;border: #CC9966 solid 4px;height: 600px;margin-top: 10px;overflow-y: scroll}
+        .spam_email li{width: 60%;height: 120px;background-color: #5a6268;border-radius: 10px;margin: auto}
+        .write_email{float: right;width: 75%;display: none;margin: 5px;border: #CC9966 solid 4px;}
+        .index_head {
+            height: 80px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .index_head p {
+            width: 200px;
+            margin: 10px auto;
+            font-size: 20px;
+            font-family: 楷体;
+            text-align: center;
+        }
+
+        .index_medium {
+            width: 100%;
+        }
+
+        .index_medium textarea {
+            width: 90%;
+            height: 400px;
+            margin: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .index_buttom {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .button_class {
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            font-family: 楷体;
+            margin: 10px auto;
+            display: block;
+            border-radius: 5px;
+            border: none;
+            font-family: 楷体;
+            text-align: center;
+        }
+        .user_name{width: 30%;background-color: antiquewhite;
+            text-align:center;height: 30px;margin: auto;line-height: 30px;border-radius: 3px;}
+    </style>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="head">
+        <div class="head_left"></div>
+        <a class="head_right" href="/user/login/">Sign In/Sign Up</a>
+        <div class="head_second_right" id="test1">test</div>
+
+    </div>
+
+    <div class="maintain">
+        <div class="main_left">
+            <ul>
+
+                <li id="write">写邮件</li>
+                <li id="receive">收件箱</li>
+                <li id="send">已发送</li>
+                <li id="spam">垃圾邮件</li>
+                <li id="echart" style="width: 65%">邮件数量可视化</li>
+                <li id="echart3d" style="width: 80%">3D显示日使用频率</li>
+            </ul>
+        </div>
+        <div class="detail_right">
+            <div class="title">
+                <span>发送人：宋</span>
+                <span>标题：垃圾邮件</span>
+                <span>时间：2020-09-10</span>
+            </div>
+            <pre class="content_dis">详情</pre>
+        </div>
+        <div class="receive_email">
+            <ul id="receive_id">
+                <!-- <li>
+                    <p>标题:<span>title</span></p>
+                    <p>发送人:<span>Song</span></p>
+                    <p>时间:<span>time</span></p>
+                </li>
+                -->
+            </ul>
+        </div>
+        <div class="send_email">
+            <ul id="send_id">
+                <!--    <li>
+                        <p>标题:<span>title</span></p>
+                        <p>接收人:<span>Song</span></p>
+                        <p>时间:<span>time</span></p>
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="spam_email">
+                <ul id="spam_id">
+                    <li>
+                        <p>标题:<span>title</span></p>
+                        <p>发送人:<span>Song</span></p>
+                        <p>时间:<span>time</span></p>
+                    </li>
+
+            </ul>
+        </div>
+        <div class="write_email">
+{#            <form method="post" action="/deal/">#}
+            <br>
+            &emsp;接收人：<input type="text" class="send_user" style="display: block;width: 50%;margin: 10px;height: 40px;">
+            &emsp;标题：<input type="text" class="send_title" style="display: block;width: 50%;margin: 10px;height: 40px;">
+            &emsp;发件人：<div class="user_name"></div>
+            <div class="index_head">
+                <p>邮件</p>
+            </div>
+
+                <div class="index_medium">
+                    <textarea id="content1" rows="3" name="content"></textarea>
+                </div>
+                <div class="index_buttom">
+                    <input class="button_class" type="submit" value="发送">
+
+                </div>
+{#            </form>#}
+        </div>
+    </div>
+</body>
+<script>
+    $("#echart").click(function (e) {
+        $.ajax({
+            url:"/praw/",
+            method:"get",
+            data:{username:sessionStorage.getItem("username")},
+            success:function (d) {
+                document.write(d["res"])
+            }
+        })
+    })
+    $("#echart3d").click(function (e) {
+        $.ajax({
+            url:"/user/dw/",
+            method:"get",
+            data:{username:sessionStorage.getItem("username")},
+            success:function (d) {
+                document.write(d["res"])
+            }
+        })
+    })
+    $(".user_name").html(sessionStorage.getItem("username"))
+    if(sessionStorage.getItem("username")===""||sessionStorage.getItem("username")===null||sessionStorage.getItem("username")===undefined) {
+        $("body")[0].style.backgroundColor = "rgba(255,255,255,0.6)"
+        alert("没有登录")
+        window.location.href = "/user/login/"
+    }
+    $(".head_left").html(sessionStorage.getItem("username"))
+    var tt = document.getElementById("test1")
+    tt.addEventListener('click',function (e) {
+        window.location.href = "/index/"
+    })
+    $.ajax({
+        url:"/user/query_email_receive/",
+        method: "post",
+        data:{username:sessionStorage.getItem("username")},
+        success:function (d) {
+            console.log(d)
+            data = d["result"]
+            var h = ""
+            for(i=0;i<data.length;i++){
+                h += "<li>\n" +
+                    "                    <span style='display: none'>"+data[i]["id"]+"</span>\n" +
+                    "                    <p>标题:<span>"+data[i]["email_title"]+"</span></p>\n" +
+                    "                    <p>发送人:<span>"+data[i]["send_user"]+"</span></p>\n" +
+                    "                    <p>时间:<span>"+data[i]["datatime"]+"</span></p>\n" +
+                    "                </li>"
+            }
+            $("#receive_id").html(h)
+            $("#receive_id li").click(function (self) {
+
+                first_id = $(this).children("span").html()
+                t = ""
+                for(i=0;i<data.length;i++){
+                    if(data[i]["id"]===parseInt(first_id)){
+
+
+                        t = "<div class=\"title\">\n" +
+                            "                <span>发送人："+data[i]["send_user"]+"</span>\n" +
+                            "                <span>标题："+data[i]["email_title"]+"</span>\n" +
+                            "                <span>时间："+data[i]["datatime"]+"</span>\n" +
+                            "            </div>\n" +
+                            "            <pre class=\"content_dis\">"+data[i]["content"]+"</pre>"
+                        break
+                    }
+                }
+                $(".detail_right").show()
+                $(".receive_email").hide()
+                $(".detail_right").html(t)
+            })
+        }
+    })
+    $(".button_class").click(function(e) {
+            $.ajax({
+                url: "/user/insert_email/",
+                method: "post",
+                data: {content: $("#content1").val(), receiver: $(".send_user").val(), title: $(".send_title").val(),username:sessionStorage.getItem("username")},
+                success: function (d) {
+                    console.log(d)
+                    if (d["status"]===0){
+                        alert(d["error"])
+                    }else{
+                        alert("发送成功")
+                    }
+                }
+            })
+        }
+    )
+    $("#receive").click(function (e) {
+        $(".detail_right").hide();
+        $(".receive_email").show();
+        $(".send_email").hide();
+        $(".write_email").hide();
+        $(".spam_email").hide();
+        $.ajax({
+        url:"/user/query_email_receive/",
+        method: "post",
+        data:{username:sessionStorage.getItem("username")},
+        success:function (d) {
+            console.log(d)
+            data = d["result"]
+            var h = ""
+            for(i=0;i<data.length;i++){
+                h += "<li>\n" +
+                    "                    <span style='display: none'>"+data[i]["id"]+"</span>\n" +
+                    "                    <p>标题:<span>"+data[i]["email_title"]+"</span></p>\n" +
+                    "                    <p>发送人:<span>"+data[i]["send_user"]+"</span></p>\n" +
+                    "                    <p>时间:<span>"+data[i]["datatime"]+"</span></p>\n" +
+                    "                </li>"
+            }
+            $("#receive_id").html(h)
+            $("#receive_id li").click(function (self) {
+
+                first_id = $(this).children("span").html()
+                t = ""
+                for(i=0;i<data.length;i++){
+                    if(data[i]["id"]===parseInt(first_id)){
+
+
+                        t = "<div class=\"title\">\n" +
+                            "                <span>发送人："+data[i]["send_user"]+"</span>\n" +
+                            "                <span>标题："+data[i]["email_title"]+"</span>\n" +
+                            "                <span>时间："+data[i]["datatime"]+"</span>\n" +
+                            "            </div>\n" +
+                            "            <pre class=\"content_dis\">"+data[i]["content"]+"</pre>"
+                        break
+                    }
+                }
+                $(".detail_right").show()
+                $(".receive_email").hide()
+                $(".detail_right").html(t)
+            })
+        }
+    })
+    });
+    $("#send").click(function (e) {
+        $(".detail_right").hide();
+        $(".receive_email").hide();
+        $(".send_email").show();
+        $(".write_email").hide();
+        $(".spam_email").hide();
+
+        $.ajax({
+            url:"/user/query_email_send/",
+            method:"post",
+            data:{username:sessionStorage.getItem("username")},
+            success:function (d) {
+                console.log(d)
+                data = d["result"]
+                var h = ""
+                for(i=0;i<data.length;i++){
+                    h += "<li>\n" +
+                        "                    <span style='display: none'>"+data[i]["id"]+"</span>\n" +
+                        "                    <p>标题:<span>"+data[i]["email_title"]+"</span></p>\n" +
+                        "                    <p>接收人:<span>"+data[i]["receive"]+"</span></p>\n" +
+                        "                    <p>时间:<span>"+data[i]["datatime"]+"</span></p>\n" +
+                        "                </li>"
+                }
+                $("#send_id").html(h)
+
+                $("#send_id li").click(function (self) {
+
+                    first_id = $(this).children("span").html()
+                    t = ""
+                    for(i=0;i<data.length;i++){
+                        if(data[i]["id"]===parseInt(first_id)){
+                            t = "<div class=\"title\">\n" +
+                                "                <span>发送人："+data[i]["send_user"]+"</span>\n" +
+                                "                <span>标题："+data[i]["email_title"]+"</span>\n" +
+                                "                <span>时间："+data[i]["datatime"]+"</span>\n" +
+                                "            </div>\n" +
+                                "            <pre class=\"content_dis\">"+data[i]["content"]+"</pre>"
+                            break
+                        }
+                    }
+                    $(".detail_right").show()
+                    $(".send_email").hide()
+                    $(".detail_right").html(t)
+                })
+            }
+        })
+
+    });
+    $("#spam").click(function (e) {
+        $(".detail_right").hide();
+        $(".receive_email").hide();
+        $(".send_email").hide();
+        $(".write_email").hide();
+        $(".spam_email").show();
+        $.ajax({
+            url:"/user/query_email_spam/",
+            method:"post",
+            data:{username:sessionStorage.getItem("username")},
+            success:function (d) {
+                console.log(d)
+                data = d["result"]
+                var h = ""
+                for(i=0;i<data.length;i++){
+                    h += "<li>\n" +
+                        "                    <span style='display: none'>"+data[i]["id"]+"</span>\n" +
+                    "                    <p>标题:<span>"+data[i]["email_title"]+"</span></p>\n" +
+                    "                    <p>发送人:<span>"+data[i]["send_user"]+"</span></p>\n" +
+                    "                    <p>时间:<span>"+data[i]["datatime"]+"</span></p>\n" +
+                    "                </li>"
+                }
+                $("#spam_id").html(h)
+
+                $("#spam_id li").click(function (self) {
+
+                    first_id = $(this).children("span").html()
+                    t = ""
+                    for(i=0;i<data.length;i++){
+                        if(data[i]["id"]===parseInt(first_id)){
+                            t = "<div class=\"title\">\n" +
+                                "                <span>发送人："+data[i]["send_user"]+"</span>\n" +
+                                "                <span>标题："+data[i]["email_title"]+"</span>\n" +
+                                "                <span>时间："+data[i]["datatime"]+"</span>\n" +
+                                "            </div>\n" +
+                                "            <pre class=\"content_dis\">"+data[i]["content"]+"</pre>"
+                            break
+                        }
+                    }
+                    $(".detail_right").show()
+                    $(".spam_email").hide()
+                    $(".detail_right").html(t)
+                })
+            }
+        })
+    });
+    $("#write").click(function (e) {
+        $(".receive_email").hide();
+        $(".send_email").hide();
+        $(".write_email").show();
+        $(".spam_email").hide();
+        $(".detail_right").hide();
+    })
+
+</script>
+</html>

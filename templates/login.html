@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件系统登录</title>
+    <script src="/static/js/jquery.min.js"></script>
+    <style>
+        *{margin: 0;padding:0}
+        body{background-color: #C9C9C9}
+        {#body{background: url("/static/beijin.png") no-repeat;background-size: cover;z-index: 1;}#}
+        input{outline: none}
+        .box{width: 300px;height:300px;margin: 10% auto;padding-top: 20px;box-shadow: -2px 0px 30px 10px rgba(0,0,0,.9);border-radius: 20px;background-color: rgba(255,255,255,0.2)}
+        .box img{width: 60px;height: 70px;display: block;margin: 0 auto}
+        .web_name{width: 200px;display: block;margin:5px auto;text-align: center;font-family: 楷体;font-size: 20px;font-weight: bold}
+        .user_name{width: 200px;height:40px;margin: 20px auto;display: block;text-align: center;border-radius: 5px;border: 0;}
+        .user_name:hover{border:2px solid #96DF5B}
+        .user_pwd{width: 200px;height:40px;margin: 20px auto;display: block;text-align: center;border-radius: 5px;border: 0;}
+        .user_pwd:hover{border:2px solid #96DF5B}
+        .user_login{width: 80px;height:35px;margin:10px 0 0 110px;display: inline-block;border-radius: 15px;border: none}
+        .user_login:hover{border:2px solid #96DF5B}
+        .user_login_reg{width:80px;height: 15px;margin-left: 10px;font-size: 10px;margin-top: 8px;display: inline-block;}
+        a{text-decoration: none;color: moccasin}
+        .spam_test{
+            display: block;margin: 60px auto;height: 40px;width: 80px;font-size: 20px;font-weight: bold;line-height: 40px;text-align: center;background-color: #CCFFFF;border-radius: 3px;
+        }
+    </style>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<a class="spam_test" style="text-decoration: none;color: black" href="/index/">
+    test
+</a>
+<div class="box">
+    <span class="web_name">邮件系统</span>
+    <p style="text-align: center;width: 100%;color: #721c24;font-weight: bold" id="error_text"></p>
+
+        <input type="text" name="username" placeholder="用户名" class="user_name" >
+        <input type="password" name="passwd" placeholder="密码" class="user_pwd" autocomplete="off">
+        <input type="button" name="login" value="登录" class="user_login">
+        <a class="user_login_reg" href="/user/register/">没有用户？注册</a>
+
+</div>
+    <script>
+        if(sessionStorage.getItem("username")) {
+            sessionStorage.removeItem("username")
+        }
+        $(".user_login").click(function (e) {
+            $.ajax({
+                url:"/user/login/",
+                method:"post",
+                data:{username:$(".user_name").val(),passwd:$(".user_pwd").val()},
+                success:function (d) {
+                    if(d["status"]===1){
+                        sessionStorage.setItem("username",$(".user_name").val())
+                        window.location.href = "/main/"
+                    }
+                    else{
+                        $("#error_text").html(d["error"])
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>

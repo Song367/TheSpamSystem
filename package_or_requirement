@@ -1,0 +1,11 @@
+xlrd==1.2.0
+
+
+返回数据 result： 返回spam 或者 normal
+error:  有错则返回错误 ，否侧为空
+code: 1 代表邮件为空 ， 0 代表邮件符合标准
+
+
+数据库中 category:
+1 代表 spam
+0 代表 normal
